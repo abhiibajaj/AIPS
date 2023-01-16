@@ -3,6 +3,7 @@ package org.seek.aips.io;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.seek.aips.exceptions.InvalidFileFormatException;
 import org.seek.aips.models.TrafficCountDataPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -63,5 +64,19 @@ public class TrafficTimeSeriesFileReaderTest {
 
         // Act & Assert
         assertThrows(NoSuchFileException.class, () -> reader.read());
+    }
+
+    @Test
+    public void invalidFileFormatException() throws IOException {
+
+        // Arrange
+        String testFileContent = "2021-12-01T05:00:00\n";
+        Path testFile = Files.createTempFile("input", ".txt");
+        reader.setInputFile(testFile.toString());
+        Files.write(testFile, testFileContent.getBytes());
+
+
+        // Act & Assert
+        assertThrows(InvalidFileFormatException.class, () -> reader.read());
     }
 }
