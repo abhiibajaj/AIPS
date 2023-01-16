@@ -1,0 +1,13 @@
+spring:
+  main:
+    web-application-type: none
+
+traffic:
+  aips:
+    file:
+      input: io/input/input.txt
+      output:
+        totalCars: io/output/totalCars.txt
+        dailyTrafficCount: io/output/dailyTrafficCount.txt
+        topThreeHalfHoursWithMostCars: io/output/topThreeHalfHoursWithMostCars.txt
+        oneAndAHalfHourWindowWithLeastCars: io/output/oneAndAHalfHourWindowWithLeastCars.txt
