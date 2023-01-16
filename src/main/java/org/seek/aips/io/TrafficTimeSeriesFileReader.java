@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Component @Slf4j
 public class TrafficTimeSeriesFileReader implements TrafficTimeSeriesReader {
 
     @Value("${traffic.aips.file.input}")
@@ -35,10 +35,10 @@ public class TrafficTimeSeriesFileReader implements TrafficTimeSeriesReader {
                 trafficCountDataPoints.add(new TrafficCountDataPoint(LocalDateTime.parse(timeAndCarCount[0]), Integer.parseInt(timeAndCarCount[1])));
 
             } catch (NullPointerException e) {
-                e.printStackTrace();
+                log.error("Invalid input file format detected.");
                 throw new InvalidFileFormatException(e);
             } catch (ArrayIndexOutOfBoundsException e) {
-                e.printStackTrace();
+                log.error("Invalid input file format detected.");
                 throw new InvalidFileFormatException(e);
             }
         }
