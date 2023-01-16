@@ -17,7 +17,7 @@ Example output files for the input example file can be found [here](io/output/).
 
 ## Getting Started
 ### Dependencies
-- Apache Maven 3.8.2
+- Apache Maven 3.8.6
 - JDK 19
 
 ## Build and Develop
